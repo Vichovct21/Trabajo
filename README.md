@@ -1,0 +1,1 @@
+Página en desarrollo para la empresa Mujeres Violeta, con el fin de que nueva gente pueda mostrar sus proyectos a fin. Teniendo en cuenta que estos tendrán la oportunidad de tener un tipo de "Match" para que se puedan comunicar, etc. 
