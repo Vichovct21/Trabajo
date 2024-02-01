@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to bottom, #71107f, #760f76, #7a106e, #7d1366, #7e175f, #802064, #822768, #842e6d, #873a7f, #874791, #8553a3, #8160b5);
+    background-image: linear-gradient(to bottom, #6eaac4, #669fb7, #5e94aa, #568a9d, #4f7f90, #44788d, #3a718b, #306a88, #29638f, #335a93, #464f92, #5d418b);
   }
   
   header {
@@ -74,6 +74,7 @@ main form select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
+    margin-right: 10px;
 }
 
 main form input[type="submit"] {
@@ -246,3 +247,4 @@ main form input[type="submit"]:hover {
     flex: 2 0px;
   }
 }
+
