@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilos/register.css">
+    <title>Registro de Usuario</title>
+</head>
+
+<body>
+<header>
+        <nav>
+            <div>
+                <a href="index.html">
+                    <img src="img/MV.png" alt="Logo de Mujeres Violeta" width="50px" height="22px">
+                </a>
+            </div>
+            <div>
+                <!-- Enlaces de navegación -->
+                <a href="index.html">Sobre Nosotros</a>
+                <a href="match.php">Match</a>
+                <a href="/work/index.html">Blog</a>
+            </div>
+            <div>
+                <!-- Enlaces de login/register -->
+                <a href="/work/index.html">Login</a>
+                <a href="registro_usuario.html">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+    <h1>Registro de Usuario</h1>
+    <form action="procesos/procesar_registro.php" method="post">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" placeholder="Ej: CarlaVioleta3224" required><br>
+
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres" placeholder="Ej: Carla Antonia"required><br>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" placeholder="Ej: Hidalgo Gómez" required><br>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" placeholder="Ej: carlantonia@email.com" required><br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" placeholder="**********" required><br>
+        
+        <label for="repeat_contrasena">Repetir Contraseña:</label>
+        <input type="password" id="repeat_contrasena" name="repeat_contrasena" placeholder="**********" required>
+
+        <label for="numero_contacto">Número de Contacto:</label>
+        <input type="tel" id="numero_contacto" name="numero_contacto" placeholder="Ej: +573161121010"><br>
+
+        <label for="pais_ciudad_barrio">Pais/Ciudad/Barrio:</label>
+        <input type="text" id="pais_ciudad_barrio" name="pais_ciudad_barrio" placeholder="Ej: Santa Fe, Bogotá, Colombia" required><br>
+
+        <label for="domicilio_organizacion">Domicilio de Organización:</label>
+        <input type="text" id="domicilio_organizacion" name="domicilio_organizacion" required><br>
+
+        <label for="numero_identificacion">Número de Identificación:</label>
+        <input type="text" id="numero_identificacion" name="numero_identificacion" required><br>
+
+        <label for="tipo_organizacion">Tipo de Organización:</label>
+        <select id="tipo_organizacion" name="tipo_organizacion" required>
+            <option value="Pequeña">Pequeña</option>
+            <option value="Mediana">Mediana</option>
+            <option value="Grande">Grande</option>
+        </select><br>
+
+        <input type="submit" value="Registrar Usuario">
+    </form>
+</main>
+</body>
+</html>

@@ -44,9 +44,19 @@ main {
     align-items: center;
 }
 
-.content-text {
+.content-text-1 h2 {
     flex: 1;
     margin-right: 20px;
+    color: #7e1e56;
+}
+.content-text-1 {
+  flex: 1;
+  margin-right: 20px;
+
+}
+.content-text {
+  flex: 1;
+  margin-right: 20px;
 }
 
 .content-image {
