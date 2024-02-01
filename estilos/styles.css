@@ -140,7 +140,12 @@ main {
   .footer a {
     text-decoration: none;
   }
-  
+
+  .footer a:hover {
+    text-decoration: none;
+    color:#7e1e56;
+  }
+
   .footer__nav {
     display: flex;
     flex-flow: row wrap;
