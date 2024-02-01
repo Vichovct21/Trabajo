@@ -10,13 +10,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Usuario autenticado
+        // Iniciar la sesión
+        session_start();
+
+        // Establecer variables de sesión
+        $_SESSION["username"] = $username;
+        $_SESSION["loggedin"] = true;
+        $_SESSION["start_time"] = time(); // Guardar el tiempo de inicio de sesión
+
+        header("Location: ../log/index.html");
         echo "Inicio de sesión exitoso";
     } else {
         // Usuario no encontrado
         echo "Nombre de usuario o contraseña incorrectos";
     }
 }
+
 // Cerrar la conexión
 $conn->close();
 ?>

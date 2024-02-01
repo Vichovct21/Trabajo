@@ -20,7 +20,7 @@ body {
   }
   
   nav a {
-    color: #BC3383;
+    color: #335a93;
     text-decoration: none;
     padding: 10px;
     font-family: 'Open Sans', sans-serif;
@@ -46,7 +46,7 @@ body {
 main h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #7e1e56;
+    color: #335a93;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -58,7 +58,7 @@ main form {
 main form label {
     margin-bottom: 5px;
     font-family: 'Raleway', sans-serif;
-    color: #7e1e56;
+    color: #335a93;
     font-weight: bold;
 }
 
@@ -78,7 +78,7 @@ main form select {
 }
 
 main form input[type="submit"] {
-    background-color: #7e1e56;
+    background-color: #335a93;
     color: #fff;
     padding: 12px 20px;
     border: none;
@@ -89,7 +89,7 @@ main form input[type="submit"] {
     transition: background-color 0.3s;
 }
 main form input[type="submit"]:hover {
-  background-color:#BC3383;
+  background-color:#1e3557;
   color: #fff;
   padding: 12px 20px;
   border: none;
@@ -105,7 +105,7 @@ main form input[type="submit"]:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #BC3383; /* Color de la barra de desplazamiento */ /* Redondear las esquinas de la barra de desplazamiento */
+  background-color: #335a93; /* Color de la barra de desplazamiento */ /* Redondear las esquinas de la barra de desplazamiento */
 }
 
 /* Estilos para navegadores Gecko (Firefox) */
@@ -114,7 +114,7 @@ main form input[type="submit"]:hover {
 }
 
 ::-moz-scrollbar-thumb {
-  background-color: #BC3383; /* Color de la barra de desplazamiento */
+  background-color: #335a93; /* Color de la barra de desplazamiento */
   border-radius: 6px; /* Redondear las esquinas de la barra de desplazamiento */
 }
 
