@@ -3,10 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('/img/mountains-190055_1920.jpg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta correcta de tu imagen */
-  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
-  background-position: center; /* Centra la imagen en el fondo */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-image: linear-gradient(to bottom, #7e1e56, #7e275f, #7d2f67, #7c366f, #7a3d76, #783f7a, #75427e, #724482, #6e4384, #694286, #634289, #5d418b);
 }
   
   header {
@@ -78,6 +75,7 @@ main form select {
     border: 1px solid #ccc;
     border-radius: 10px;
 }
+
 
 main form input[type="submit"] {
     background-color: #7e1e56;

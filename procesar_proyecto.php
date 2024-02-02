@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include 'procesos/conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_organizacion = $_POST["nombre_organizacion"];
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump($_FILES);
     // Verifica si el campo de archivo "imagen" está presente en la matriz $_FILES
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
-        $targetDirectory = "../imagenes";
+        $targetDirectory = "imagenes";
         echo $targetFile;
 
         $targetFile = $targetDirectory . '/' . basename($_FILES["imagen"]["name"]);
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($conn->query($sql) === TRUE) {
                 // Redirige al usuario a la página de éxito
-                header("Location: ../registro_exitoso_proyecto.html");
+                header("Location: registro_exitoso_proyecto.html");
                 exit();
             } else {
                 echo "Error al registrar el proyecto: " . $conn->error;
