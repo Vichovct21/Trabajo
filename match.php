@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="estilos/match.css">
-    <title>Document</title>
+    <title>Violeta MATCH</title>
 </head>
 <body>
 <header>
@@ -18,7 +18,7 @@
             <div>
                 <!-- Enlaces de navegación -->
                 <a href="index.html">Sobre Nosotros</a>
-                <a href="match.php">Match</a>
+                <a href="match.php">MATCH</a>
                 <a href="/work/index.html">Blog</a>
             </div>
             <div>
@@ -30,42 +30,64 @@
     </header>
     <main>
     <div class="filtro">
-        <h2>ENCUENTRA A TU ALIADO IDEAL</h2>
+        <h2>ENCUENTRA A TU ALIADO IDEAL </h2>
     </div>
     <div class="proyectos">
-        <?php
+    <?php
+include 'procesos/conexion.php';
+
+// Consulta para obtener todos los proyectos
+$sql = "SELECT * FROM proyecto";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<div class='proyecto'>";
+        $imagen = htmlspecialchars($row["imagen"]);
         
-        include 'procesos/conexion.php';
-
-        // Consulta para obtener todos los proyectos
-        $sql = "SELECT * FROM proyecto";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='proyecto'>";
-                $imagen = htmlspecialchars($row["imagen"]);
-              
-                
-                if (!empty($imagen) && file_exists($imagen)) {
-                  echo "<img src='" . $imagen . "' alt='Imagen del proyecto'>";
-              } else {
-                  echo "No hay imagen disponible o la ruta es incorrecta";
-              }
-                echo "<h3>" . $row["nombre_proyecto"] . "</h3>";
-               
-
-                echo "<p><strong>Ubicación:</strong> " . $row["pais_ciudad_barrio"] . "</p>";
-                echo "<p>" . $row["descripcion_corta"] . "</p>";
-                echo "</div>";
-            }
+        if (!empty($imagen) && file_exists($imagen)) {
+            echo "<img src='" . $imagen . "' alt='Imagen del proyecto'>";
         } else {
-            echo "No hay proyectos disponibles.";
+            echo "No hay imagen disponible o la ruta es incorrecta";
         }
 
-        // Cerrar la conexión
-        $conn->close();
-        ?>
+        echo "<h3>" . $row["nombre_proyecto"] . "</h3>";
+
+        // Mostrar valoración con símbolos de estrellas
+        $valoracion = $row["valoracion"];
+        echo "<div class='rating'>";
+        echo "<p>";
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= $valoracion) {
+                echo "⭐"; // Símbolo de estrella llena
+            } else {
+                echo "☆"; // Símbolo de estrella vacía
+            }
+        }
+        echo "</p>";
+        echo "</div>";
+        echo "<p><strong>📍</strong> " . $row["pais_ciudad_barrio"] . "</p>";
+
+        $descripcion_corta = $row["descripcion_corta"];
+        $max_caracteres = 100; // Establece el número máximo de caracteres que deseas mostrar
+
+        if (strlen($descripcion_corta) > $max_caracteres) {
+            $descripcion_corta = substr($descripcion_corta, 0, $max_caracteres) . "...";
+        }
+
+        echo '<p id="desc">' . $descripcion_corta . '</p>';
+        echo "<button> Leer Más </button>";
+
+        echo "</div>";
+    }
+} else {
+    echo "No hay proyectos disponibles.";
+}
+
+// Cerrar la conexión
+$conn->close();
+?>
+
     </div>
     </main>
     <footer class="footer">

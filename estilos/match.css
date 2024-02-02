@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap');
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
@@ -23,7 +25,8 @@ nav a {
     color: #BC3383;
     text-decoration: none;
     padding: 10px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'GFS Didot', serif;
+    font-weight: bold;
 }
 nav a:hover {
     color: #7e1e56;
@@ -32,16 +35,16 @@ nav a:hover {
     font-weight: bold;
 }
 .filtro {
-    background-color: #fff;
+    background-color: #BC3383;
     padding: 10px;
-    border-radius: 5px;
     margin-bottom: 20px;
     text-align: center;
 }
 .filtro H2{
-    color: #f3dc09;
+  font-size: 3em;
+  font-family: 'Playfair Display', serif;
+  color: #fff;
 }
-
 .proyectos {
     display: flex;
     flex-wrap: wrap;
@@ -50,19 +53,42 @@ nav a:hover {
 }
 
 .proyecto {
-    border: 1px solid #ddd;
     margin: 10px;
     padding: 10px;
+    margin-bottom: 50px;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
 }
+.proyecto h3{
+  color: #7e1e56;
+  text-align: center;
+}
 
+.proyecto #desc {
+  color: #c581a9;
+}
+.proyecto p{
+  color: rgb(37, 157, 179);
+  font-family: 'Playfair Display', serif;
+}
+.rating {
+  text-align: center;
+}
+
+
+.proyecto button{
+  background-color: #7e1e56;
+  border-radius: 5px;
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  margin: 0 auto;
+  display: block;
+}
 .proyecto img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
     margin-bottom: 10px;
 }
 
@@ -195,3 +221,22 @@ nav a:hover {
       flex: 2 0px;
     }
   }
+
+  /* Estilos para navegadores WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #BC3383; /* Color de la barra de desplazamiento */ /* Redondear las esquinas de la barra de desplazamiento */
+}
+
+/* Estilos para navegadores Gecko (Firefox) */
+::-moz-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #BC3383; /* Color de la barra de desplazamiento */
+  border-radius: 6px; /* Redondear las esquinas de la barra de desplazamiento */
+}
