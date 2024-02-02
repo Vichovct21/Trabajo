@@ -9,6 +9,8 @@
 </head>
 <body>
 <header>
+  <!-- MOBIL-->
+<div class="mobile-menu-btn">&#9776;</div>
         <nav>
             <div>
                 <a href="index.html">
@@ -29,22 +31,74 @@
         </nav>
     </header>
     <main>
-    <div class="filtro">
-        <h2>ENCUENTRA A TU ALIADO IDEAL </h2>
-    </div>
-    <div class="proyectos">
-    <?php
+        <div class="filtro">
+            <h2>ENCUENTRA A TU ALIADO IDEAL </h2>
+            <form method="GET">
+    <label for="poblacion_impactada"></label>
+    <select id="poblacion_impactada" name="poblacion_impactada">
+        <option value="">Seleccionar población</option>
+        <option value="niños_y_niñas">Niños y Niñas</option>
+        <option value="jovenes">Jóvenes</option>
+        <option value="mujeres">Mujeres</option>
+        <option value="hombres">Hombres</option>
+        <option value="lgbt">Comunidad LGBT</option>
+        <option value="adultos_mayores">Adultos Mayores</option>
+        <option value="indigenas">Indígenas</option>
+        <option value="afrodescendientes">Afrodescendientes</option>
+        <option value="migrantes">Migrantes</option>
+        <option value="discapacidad">Personas con Discapacidad</option>
+        <option value="desplazadas">Desplazadas</option>
+        <option value="ley_paz">Personas vinculadas a la ley de la Paz</option>
+        <option value="otros">Otros</option>
+    </select>
+    <label for="nombre_proyecto"></label>
+    <input type="text" id="nombre_proyecto" name="nombre_proyecto" placeholder="Ingrese el nombre del proyecto">
+    <button type="submit">Filtrar</button>
+</form>
+        </div>
+        <div class="proyectos">
+
+<?php
 include 'procesos/conexion.php';
 
-// Consulta para obtener todos los proyectos
+$filtroPoblacion = $_GET['poblacion_impactada'] ?? '';
+$nombreProyecto = $_GET['nombre_proyecto'] ?? '';
+
+// Consulta para obtener todos los proyectos con el filtro y ordenados por valoración
 $sql = "SELECT * FROM proyecto";
+
+// Agregar condiciones según los parámetros recibidos
+if (!empty($filtroPoblacion) || !empty($nombreProyecto)) {
+    $sql .= " WHERE";
+
+    // Condición para población impactada
+    if (!empty($filtroPoblacion)) {
+        $filtroPoblacion = $conn->real_escape_string($filtroPoblacion);
+        $sql .= " poblacion_impactada LIKE '%$filtroPoblacion%'";
+
+        // Agregar AND si también se proporciona un nombre de proyecto
+        if (!empty($nombreProyecto)) {
+            $sql .= " AND";
+        }
+    }
+
+    // Condición para el nombre del proyecto
+    if (!empty($nombreProyecto)) {
+        $nombreProyecto = $conn->real_escape_string($nombreProyecto);
+        $sql .= " nombre_proyecto LIKE '%$nombreProyecto%'";
+    }
+}
+
+// Ordenar por valoración de forma descendente
+$sql .= " ORDER BY valoracion DESC";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<div class='proyecto'>";
         $imagen = htmlspecialchars($row["imagen"]);
-        
+
         if (!empty($imagen) && file_exists($imagen)) {
             echo "<img src='" . $imagen . "' alt='Imagen del proyecto'>";
         } else {
@@ -81,14 +135,17 @@ if ($result->num_rows > 0) {
         echo "</div>";
     }
 } else {
-    echo "No hay proyectos disponibles.";
+    if (!empty($filtroPoblacion)) {
+        echo "No hay proyectos disponibles para la población impactada: $filtroPoblacion.";
+    } else {
+        echo "No hay proyectos disponibles.";
+    }
 }
 
 // Cerrar la conexión
 $conn->close();
 ?>
-
-    </div>
+</div>
     </main>
     <footer class="footer">
   <div class="footer__addr">
@@ -167,5 +224,17 @@ $conn->close();
     </div>
   </div>
 </footer>
+<!-- MOBIL-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+
+        mobileMenuBtn.addEventListener('click', function () {
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+<!-- MOBIL-->
 </body>
 </html>

@@ -24,14 +24,13 @@ nav {
 nav a {
     color: #BC3383;
     text-decoration: none;
-    padding: 10px;
+    padding: 8px;
+    font-size: 18px;
     font-family: 'GFS Didot', serif;
-    font-weight: bold;
 }
 nav a:hover {
     color: #7e1e56;
     text-decoration: none;
-    padding: 10px;
     font-weight: bold;
 }
 .filtro {
@@ -41,9 +40,41 @@ nav a:hover {
     text-align: center;
 }
 .filtro H2{
-  font-size: 3em;
+  font-size: 2em;
   font-family: 'Playfair Display', serif;
   color: #fff;
+}
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    max-width: 600px;
+    margin: auto;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+select, input {
+    padding: 8px;
+    margin-right: 10px;
+    flex: 1;
+}
+
+button {
+    padding: 10px;
+    background-color: #7e1e56;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #310c22;
 }
 .proyectos {
     display: flex;
@@ -57,7 +88,8 @@ nav a:hover {
     padding: 10px;
     margin-bottom: 50px;
     background-color: #fff;
-    width: 300px;
+    width: calc(33.333% - 20px); /* Ancho del 33.333% menos el margen */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho */
 }
 .proyecto h3{
   color: #7e1e56;
@@ -65,7 +97,8 @@ nav a:hover {
 }
 
 .proyecto #desc {
-  color: #c581a9;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #9b4c7a;
 }
 .proyecto p{
   color: rgb(37, 157, 179);
@@ -74,7 +107,6 @@ nav a:hover {
 .rating {
   text-align: center;
 }
-
 
 .proyecto button{
   background-color: #7e1e56;
@@ -90,6 +122,7 @@ nav a:hover {
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     margin-bottom: 10px;
+    
 }
 
 .footer {
@@ -240,3 +273,30 @@ nav a:hover {
   background-color: #BC3383; /* Color de la barra de desplazamiento */
   border-radius: 6px; /* Redondear las esquinas de la barra de desplazamiento */
 }
+
+/* MOBIL *//* MOBIL *//* MOBIL *//* MOBIL *//* MOBIL */
+.mobile-menu-btn {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #2f2f2f;
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        display: block;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+/* MOBIL *//* MOBIL *//* MOBIL *//* MOBIL *//* MOBIL */
