@@ -75,13 +75,6 @@ main form input {
     border-radius: 10px;
 }
 
-main form select {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-}
-
 main form input[type="submit"] {
     background-color: #7e1e56;
     color: #fff;
