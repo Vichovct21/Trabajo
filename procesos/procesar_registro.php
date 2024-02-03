@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($conn->query($sql) === TRUE) {
             echo '<script>
-                    window.location.href = "../registro_proyecto.html";
-                    alert("Usuario registrado exitosamente");
+                    window.location.href = "../registro_exitoso.html";
+                    
                   </script>';
         } else {
             echo "Error al registrar el usuario: " . $conn->error;

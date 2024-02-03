@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
 body {
   font-family: Arial, sans-serif;
@@ -28,7 +28,7 @@ nav a {
   text-decoration: none;
   padding: 10px;
   font-size: 18px;
-  font-family: 'GFS Didot', serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 nav a:hover {
@@ -49,15 +49,28 @@ main {
     display: flex;
     align-items: center;
 }
-
+h1{
+  font-size: 35px;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  color: #ffffff;
+}
+.text-center{
+  font-size: 35px;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  color: #7e1e56;
+}
 .content-text-1 h2 {
     flex: 1;
     margin-right: 20px;
     color: #7e1e56;
+    font-family: 'Quicksand', sans-serif;
 }
 .content-text-1 {
   flex: 1;
   margin-right: 20px;
+  font-family: 'Quicksand', sans-serif;
 
 }
 .content-text {
@@ -70,6 +83,18 @@ main {
     border-radius: 50px; /* Ajusta el radio según tus preferencias */
     overflow: auto;
 }
+
+.content-text-izq {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.content-image-izq {
+    flex: 1;
+    border-radius: 50px; /* Ajusta el radio según tus preferencias */
+    overflow: auto;
+}
+
 
 *, *:before, *:after {
     box-sizing: border-box;
@@ -193,7 +218,7 @@ main {
   }
   
   .heart {
-    color: #2f2f2f;
+    color: #ff0000;
   }
   
   @media screen and (min-width: 24.375em) {
@@ -314,16 +339,49 @@ main {
     margin: 0 1.618em;
     top: 55%;
     opacity: 0;
-    
-    h1 {
-      font-family: 'Pathway Gothic One',Helvetica Neue,Helvetica,Arial,sans-serif;
-      text-transform: uppercase;
-      color: #ffffff;
-      font-size: 1.44rem;
-      font-weight: normal;
-    }
   }
-  
+  h2 {
+    text-align: center;
+    color: #7e1e56;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+    #carrusel-container {
+      display: flex;
+      overflow-x: auto;
+      margin-top: 10px;
+      justify-content: center; /* Centra los círculos */
+  }
+  .content-image-container{
+    background-color: #7e1e56;
+  }
+  .circle {
+      width: 100px;
+      height: 100px;
+      background-color: #ddd;
+      border-radius: 50%;
+      margin-top: 10px;
+      margin-right: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid #ffffff;
+      margin-bottom: 20px;
+  }
+
+  .circle:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+
+  }
+
+  .circle img {
+      width: 100%; /* Ajusta el tamaño de las imágenes dentro de los círculos */
+      height: auto;
+      border-radius: 10%;
+  }
+
   .tl-year {
     position: absolute;
     top: 50%;
@@ -334,7 +392,7 @@ main {
     border-bottom: 1px solid #fff;
     
     p {
-      font-family: 'Pathway Gothic One',Helvetica Neue,Helvetica,Arial,sans-serif;
+      font-family: 'Quicksand', sans-serif;
       font-size: 1.728rem;
       line-height: 0;
     }
@@ -350,6 +408,3 @@ main {
     transition: filter 0.5s ease;
     filter: grayscale(100%);
   }
-  
-
-

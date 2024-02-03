@@ -9,24 +9,31 @@
 </head>
 <body>
 <header>
-  <!-- MOBIL-->
-<div class="mobile-menu-btn">&#9776;</div>
         <nav>
             <div>
-                <a href="index.html">
+                <a href="index.php">
                     <img src="img/MV.png" alt="Logo de Mujeres Violeta" width="50px" height="22px">
                 </a>
             </div>
             <div>
                 <!-- Enlaces de navegación -->
-                <a href="index.html">Sobre Nosotros</a>
+                <a href="index.php">Sobre Nosotros</a>
                 <a href="match.php">MATCH</a>
-                <a href="/work/index.html">Blog</a>
+                <a href="blog.php">Blog</a>
             </div>
             <div>
-                <!-- Enlaces de login/register -->
-                <a href="login.html">Login</a>
-                <a href="registro_usuario.html">Register</a>
+            <?php                
+session_start();
+// Verificar si hay una sesión activa
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    // Si está logeado, muestra el enlace para cerrar sesión
+    echo "<a href='registro_proyecto.html'>Registrar Proyecto</a>";
+    echo "<a href='procesos/cerrar_sesion.php'>Cerrar Sesión</a>"; 
+} else {
+    // Si no está logeado, muestra el enlace para iniciar sesión
+    echo "<a href='login.html'>Iniciar Sesión</a>";
+}
+?>
             </div>
         </nav>
     </header>
@@ -52,12 +59,11 @@
         <option value="otros">Otros</option>
     </select>
     <label for="nombre_proyecto"></label>
-    <input type="text" id="nombre_proyecto" name="nombre_proyecto" placeholder="Ingrese el nombre del proyecto">
-    <button type="submit">Filtrar</button>
+    <input type="text" id="nombre_proyecto" name="nombre_proyecto" placeholder="Nombre Proyecto">
+    <button type="submit">🔍</button>
 </form>
         </div>
         <div class="proyectos">
-
 <?php
 include 'procesos/conexion.php';
 
@@ -99,12 +105,11 @@ if ($result->num_rows > 0) {
         echo "<div class='proyecto'>";
         $imagen = htmlspecialchars($row["imagen"]);
 
-        if (!empty($imagen) && file_exists($imagen)) {
-            echo "<img src='" . $imagen . "' alt='Imagen del proyecto'>";
-        } else {
-            echo "No hay imagen disponible o la ruta es incorrecta";
-        }
-
+if (!empty($imagen) && file_exists($imagen)) {
+    echo "<img src='" . $imagen . "' alt='Imagen del proyecto' style='width: 400px; height: 250px;'>"; // Ajusta los valores según tu preferencia
+} else {
+    echo "No hay imagen disponible o la ruta es incorrecta";
+}
         echo "<h3>" . $row["nombre_proyecto"] . "</h3>";
 
         // Mostrar valoración con símbolos de estrellas
@@ -130,8 +135,42 @@ if ($result->num_rows > 0) {
         }
 
         echo '<p id="desc">' . $descripcion_corta . '</p>';
-        echo "<button> Leer Más </button>";
-
+        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+          echo "<a href='detalles_proyecto.php?id=" . $row["id_proyecto"] . "' 
+          style='display: inline-block; /* Para que solo ocupe el ancho necesario */
+          padding: 10px;
+          background-color: #7e1e56;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: center;
+          font-family: \"Quicksand\", sans-serif;
+          text-decoration: none; /* Para quitar el subrayado */
+          margin-left: 40%;
+           /* Ajusta el margen superior según sea necesario */'>Leer Más</a>";
+           
+      } else {
+          echo "<script>
+              function verificarSesion() {
+                  alert('Debes iniciar sesión para ver más detalles.');
+                  window.location.href='login.html';
+              }
+          </script>";
+          echo "<a href='#' onclick='verificarSesion()' 
+          style='display: inline-block; /* Para que solo ocupe el ancho necesario */
+          padding: 10px;
+          background-color: #7e1e56;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: center;
+          font-family: \"Quicksand\", sans-serif;
+          text-decoration: none; /* Para quitar el subrayado */
+          margin-left: 40%;
+           /* Ajusta el margen superior según sea necesario */'>Leer Más</a>";
+      }
         echo "</div>";
     }
 } else {

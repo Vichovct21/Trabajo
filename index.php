@@ -1,37 +1,42 @@
-<!DOCTYPE html> 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Violeta HUB</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="estilos/styles.css">
     <link rel="icon" href="img/MV.png" type="image/x-icon">
 </head>
 <body>
     <header>
         <nav>
             <div>
-                <a href="index.html">
+                <a href="index.php">
                     <img src="img/MV.png" alt="Logo de Mujeres Violeta" width="50px" height="22px">
                 </a>
             </div>
             <div>
-                <!-- Enlaces de navegación -->
-                <a href="index.html">Sobre Nosotros</a>
-                <a href="../match.php">Match</a>
-                <a href="/work/index.html">Blog</a>
+                <a href="index.php">Sobre Nosotros</a>
+                <a href="match.php">MATCH</a>
+                <a href="blog.php">Blog</a>
             </div>
             <div>
-                <!-- Enlaces de login/register -->
-                <a href="">Tu cuenta</a>
+                <?php
+                    session_start();
+                    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        echo "<a href='registro_proyecto.html'>Registrar Proyecto</a>";
+                        echo "<a href='procesos/cerrar_sesion.php'>Cerrar Sesión</a>"; 
+                    } else {
+                        echo "<a href='login.html'>Iniciar Sesión</a>";
+                    }
+                ?>
             </div>
         </nav>
     </header>
     <img class="banner" src="img/jenny-ueberberg-BaSeK7rwc1A-unsplash.jpg" alt="Imagen Header">
     <main> 
         <section class="content-text-1">
-            <h2>¿Qué es  el Ecosistema  de Innovación y Creatividad?</h2>
-            <p>Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raices en una pieza cl´sica de la literatura del Latin, que data del año 45 antes de Cristo, haciendo que este adquiera mas de 2000 años de antiguedad. Richard McClintock, un profesor de Latin de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín, descubrió la fuente indudable. Lorem Ipsum viene de las secciones 1.10.32 y 1.10.33 de "de Finnibus Bonorum et Malorum" (Los Extremos del Bien y El Mal) por Cicero, escrito en el año 45 antes de Cristo. Este libro es un tratado de teoría de éticas, muy popular durante el Renacimiento. La primera linea del Lorem Ipsum, "Lorem ipsum dolor sit amet..", viene de una linea en la sección 1.10.32</p>
+            <h2>¿Qué es el Ecosistema de Innovación y Creatividad?</h2>
+            <p>Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raices en una pieza clásica de la literatura del Latin, que data del año 45 antes de Cristo, haciendo que este adquiera más de 2000 años de antigüedad...</p>
         </section>
         
         <section class="content-image">
@@ -40,7 +45,6 @@
     </main>
     <div>
         <section id="timeline">
-  
             <div class="tl-item">
               
               <div class="tl-bg" style="background-image: url(https://placeimg.com/801/801/nature)"></div>
@@ -129,13 +133,13 @@
                   <p>Paz, alianzas y resultados para 2030</p>
                 </div>
               </div>
-          </section>
+              </section>
     </div>
     <div>
         <main> 
             <section class="content-text">
                 <h2>¿Qué es <strong>VIOLETA HUB</strong>?</h2>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
             </section>
             
             <section class="content-image">
@@ -144,14 +148,49 @@
         </main>
     </div>
     <div>
-
+        <h2 class="text-center">Aliados y Colaboradores</h2>
+        <section class="content-image-container">
+            <div id="carrusel-container">
+                <div class="circle">
+                    <img src="img/logo1.png" alt="Imagen 1">
+                </div>
+                <div class="circle">
+                    <img src="img/logo2.jpg" alt="Imagen 2">
+                </div>
+                <div class="circle">
+                    <img src="img/logo3.png" alt="Imagen 3">
+                </div>
+                <div class="circle">
+                    <img src="img/Procolombia-1.jpg" alt="Imagen 4">
+                </div>
+                <!-- Agrega más elementos según sea necesario -->
+            </div>
+        </section>
     </div>
+    <h1 class="text-center">Fundadora</h1>
+    <main> 
+        <section class="content-image-izq">
+            <img src="img/karen.png" alt="Imagen Izq" style="width: 100%; height: auto;">
+        </section>
+        <section class="content-text-izq">
+            <h2>Biografía</h2>
+            <p>
+            <li>CEO Mujeres Violeta</li>
+            <li>Co-Fundadora Fundación Mujeres Violeta</li>
+            <li>Presidenta WEF Colombia</li>
+            <li>Directora General WEF Los Angeles, California</li>
+            </p>
+            <p>Consultora y Formadora Empresarial en temas de Igualdad de Género con énfasis en Sororidad, Diversidad y Responsabilidad Social / Speaker Internacional / Multipremiada<br>
+            <br>
+            <strong>Global Chair G100 Mentoring & Motivation</strong><br>
+            <strong>Co-creadora Violeta Film Fest </strong><br>
+            <strong>Creadora Latin American Sustainable</strong><br>
+            <strong>Fashion Week LASFW</strong></p>
+        </section>
+    </main>
     <footer class="footer">
   <div class="footer__addr">
     <h1 class="footer__logo">Mujeres Violeta</h1>
-        
-    <h2>Contacto</h2>
-    
     <address>
         Cajicá, Cundinamarca, Colombia<br>
           
@@ -214,10 +253,8 @@
       </ul>
     </li>
   </ul>
-  
   <div class="legal">
     <p>&copy; 2024 Mujeres Violeta. Todos los derechos reservados</p>
-    
     <div class="legal__links">
       <span>Hecho con <span class="heart">♥</span> Vimax</span>
     </div>

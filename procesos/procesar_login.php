@@ -5,9 +5,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $contrasena = $_POST["contrasena"];
 
-    // Consulta para verificar si el usuario existe
-    $sql = "SELECT * FROM usuarios WHERE username = '$username' AND contrasena = '$contrasena'";
-    $result = $conn->query($sql);
+    // Consulta utilizando sentencias preparadas para prevenir la inyección de SQL
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE username = ? AND contrasena = ?");
+    $stmt->bind_param("ss", $username, $contrasena);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         // Iniciar la sesión
@@ -18,14 +20,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["loggedin"] = true;
         $_SESSION["start_time"] = time(); // Guardar el tiempo de inicio de sesión
 
-        header("Location: ../log/index.html");
-        echo "Inicio de sesión exitoso";
+        // Redirigir al usuario después del inicio de sesión
+        header("Location: ../index.php");
+        exit();
     } else {
         // Usuario no encontrado
-        echo "Nombre de usuario o contraseña incorrectos";
+        echo '<script>
+        alert("Usuario y/o Contraseña incorrecta");
+        window.location.href="../login.html";</script>';
     }
-}
 
-// Cerrar la conexión
-$conn->close();
+    // Cerrar la conexión
+    $stmt->close();
+    $conn->close();
+} else {
+    // Si la solicitud no es POST, redirigir a alguna página de error o realizar otra acción necesaria
+    header("Location: ../error.html");
+    exit();
+}
 ?>
